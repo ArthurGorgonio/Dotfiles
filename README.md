@@ -1,0 +1,4 @@
+# Dotfiles
+- Terminator
+- Vimrc
+- Zshrc

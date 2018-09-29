@@ -1,0 +1,37 @@
+[global_config]
+  extra_styling = False
+  scroll_tabbar = True
+  title_font = SpaceMono Nerd Font Mono 9
+  title_use_system_font = False
+[keybindings]
+  zoom_in = <Primary>equal
+[layouts]
+  [[default]]
+    [[[child0]]]
+      fullscreen = False
+      maximised = False
+      order = 0
+      parent = ""
+      position = 0:0
+      size = 675, 355
+      title = Terminator
+      type = Window
+    [[[terminal1]]]
+      order = 0
+      parent = child0
+      profile = default
+      type = Terminal
+[plugins]
+[profiles]
+  [[default]]
+    allow_bold = False
+    cursor_blink = False
+    cursor_color = "#aaaaaa"
+    font = SpaceMono Nerd Font Mono 9
+    foreground_color = "#ff00b8"
+    icon_bell = False
+    palette = "#000000:#cd0000:#00cd00:#cdcd00:#0000cd:#cd00cd:#00cdcd:#faebd7:#404040:#ff0000:#00ff00:#ffff00:#0000ff:#ff00ff:#00ffff:#ffffff"
+    scrollback_infinite = True
+    scrollbar_position = hidden
+    show_titlebar = False
+    use_system_font = False
