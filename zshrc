@@ -2,9 +2,9 @@
 # arthurgorgonio@ufrn.edu.br, copy in: 2018 Sep 29
 
 ########################################
-#        Zsh configuration file        #
+#        Zsh Configuration File        #
 #     Maintainer: Arthur Gorgonio      #
-#       Last Change: 2018 Sep 29       #
+#       Last Change: 2018 Oct 01       #
 ########################################
 
 ### COLORS CODE
@@ -98,6 +98,7 @@ POWERLEVEL9K_BATTERY_LOW_BACKGROUND=000
 POWERLEVEL9K_BATTERY_LOW_FOREGROUND=009
 # The percentage of battery required to switch from disconnected to low (15%)
 POWERLEVEL9K_BATTERY_LOW_THRESHOLD=015
+POWERLEVEL9K_BATTERY_VERBOSE=false
 
 # Status colors
 POWERLEVEL9K_STATUS_OK_BACKGROUND=000
@@ -108,7 +109,7 @@ POWERLEVEL9K_STATUS_VERBOSE=false
 # Time format hour:minute - day[1-7] 1 - Monday
 #POWERLEVEL9K_TIME_ICON="\uE381" #  CLOCK
 POWERLEVEL9K_TIME_FORMAT='%D{%H:%M}'
-POWERLEVEL9K_TIME_FOREGROUND=022
+POWERLEVEL9K_TIME_FOREGROUND=202
 
 # Background process colors
 POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND=000
