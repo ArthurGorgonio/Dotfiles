@@ -121,7 +121,7 @@ set undolevels=1000
 
 colorscheme calm-theme
 
-let @e='i& $WxExEa$'
+let @e='i $WxExEa$'
 let @w='2l@e'
 let @t='$A \\ \cline{2-9}w'
 let @r="0@e6@w@t"
