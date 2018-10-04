@@ -4,7 +4,7 @@
 ########################################
 #        Zsh Configuration File        #
 #     Maintainer: Arthur Gorgonio      #
-#       Last Change: 2018 Oct 01       #
+#       Last Change: 2018 Oct 10       #
 ########################################
 
 ### COLORS CODE
@@ -33,31 +33,35 @@ export ZSH_CUSTOM="$HOME/.oh-my-zsh/custom"
 
 # Using the spotify
 prompt_music(){
-  local track=$(($(playerctl status)))
-  if ((track)); then
-    echo -e "♫"
+  playerctl status > /dev/null 2> /dev/null
+  if [[ $? -eq 1 ]] ;then
+    local color='%F{009}'
+    echo -ne "%{$color%}\uE0B1 \uF001 "
   else
-    local color='%F{green}'
+    local color='%F{006}'
     local artist=$(playerctl metadata xesam:artist)
     local album=$(playerctl metadata xesam:album)
     local track=$(playerctl metadata xesam:title)
 
-    echo -e "%{$color%} ♫ $track"
+    echo -n "%{$color%}\uE0B1 \uF9C6$track " # 阮music
     #echo -e "%{$color%} ♫ $track - $artist"
     #echo -e "%{$color%} ♫ $track - $artist $album"
   fi
 }
-
+# Docker Unicode \uF308 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_MODE="nerdfont-complete"
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon battery time ip dir vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon battery music time dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(background_jobs ssh)
 #POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(background_jobs ssh music)
 #POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time vi_mode background_jobs ssh dir_writable)
+
+#POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR="\uE0BC"
+#POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR="\uE0BE"
 
 # Write the command in new line
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
@@ -107,9 +111,9 @@ POWERLEVEL9K_STATUS_OK_IN_NON_VERBOSE=true
 POWERLEVEL9K_STATUS_VERBOSE=false
 
 # Time format hour:minute - day[1-7] 1 - Monday
-#POWERLEVEL9K_TIME_ICON="\uE381" #  CLOCK
+POWERLEVEL9K_TIME_ICON="\uE381" #  CLOCK
 POWERLEVEL9K_TIME_FORMAT='%D{%H:%M}'
-POWERLEVEL9K_TIME_FOREGROUND=202
+POWERLEVEL9K_TIME_FOREGROUND=010
 
 # Background process colors
 POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND=000
