@@ -4,7 +4,7 @@
 ########################################
 #        Zsh Configuration File        #
 #     Maintainer: Arthur Gorgonio      #
-#       Last Change: 2018 Oct 10       #
+#       Last Change: 2018 Oct 09       #
 ########################################
 
 ### COLORS CODE
@@ -31,8 +31,17 @@
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_CUSTOM="$HOME/.oh-my-zsh/custom"
 
+prompt_docker() {
+  systemctl status docker > /dev/null
+  if [[ $? -eq 0 ]] ;then
+    local color='%F{006}'
+  else
+    local color='%F{010}'
+  fi
+  echo -en "%{$color%} \uF312 \uE0B1"
+}
 # Using the spotify
-prompt_music(){
+prompt_music() {
   playerctl status > /dev/null 2> /dev/null
   if [[ $? -eq 1 ]] ;then
     local color='%F{009}'
@@ -55,7 +64,7 @@ prompt_music(){
 ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_MODE="nerdfont-complete"
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon battery music time dir vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(docker battery music time dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(background_jobs ssh)
 #POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(background_jobs ssh music)
 #POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time vi_mode background_jobs ssh dir_writable)
@@ -63,14 +72,14 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(background_jobs ssh)
 #POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR="\uE0BC"
 #POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR="\uE0BE"
 
+# OS icon colors
+POWERLEVEL9K_OS_ICON_BACKGROUND=000
+POWERLEVEL9K_OS_ICON_FOREGROUND=010
+
 # Write the command in new line
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="\uFB26 " # ﬦ LAMBDA
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
-
-# OS icon colors
-POWERLEVEL9K_OS_ICON_BACKGROUND=000
-POWERLEVEL9K_OS_ICON_FOREGROUND=010
 
 # Ip icon colors
 POWERLEVEL9K_IP_BACKGROUND=000
