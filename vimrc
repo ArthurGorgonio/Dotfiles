@@ -1,7 +1,32 @@
+" The original configuration https://github.com/araujobd/dotfiles/blob/master/vimrc
+" arthurgorgonio@ufrn.edu.br, copy in: 2017 Ago 30
+
+""""""""""""""""""""""""""""""""""""""""
+"        Vim Configuration File        "
+"     Maintainer: Arthur Gorgonio      "
+"       Last Change: 2018 Oct 09       "
+""""""""""""""""""""""""""""""""""""""""
+
+""" COLORS CODE
+" I choose these colors to customize the rainbow parentheses plugin. These
+" colors are ordened by xterm code. The follow lines represent a list of the
+" colors than I use.
+" Code color in xterm - the name of the color - the code in rgb
+" 000 -   Black    - #000000
+" 009 -    Red     - #FF0000
+" 010 -   Green    - #00FF00
+" 011 -   Yellow   - #FFFF00
+" 013 -  Fuchsia   - #FF00FF
+" 014 -    Aqua    - #00FFFF
+" 022 - DarkGreen  - #005F00
+" 202 - OrangeRed1 - #FF5F00
+"
+" The follow links were used to choose the colors and the icon in the configuration
+" color: https://jonasjacek.github.io/colors/
 """ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
-set nocompatible 	" be iMproved, required
-filetype off		" required
+set nocompatible  " be iMproved, required
+filetype off      " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -9,19 +34,20 @@ call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim' "Pluguin manager
 
 " Plugins
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'scrooloose/nerdtree'
+Plugin 'vim-airline/vim-airline' " Airline
+Plugin 'vim-airline/vim-airline-themes' " Airline themes
+Plugin 'scrooloose/nerdtree' " Nerd Tree
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'kien/rainbow_parentheses.vim'
+"Plugin 'tpope/vim-surround'
+"Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'luochen1990/rainbow' " Rainbow match
 Plugin 'w0rp/ale'
-Plugin 'valloric/youcompleteme'
-Plugin 'jalvesaq/Nvim-R'
+Plugin 'valloric/youcompleteme' " Suggestions words
+Plugin 'jalvesaq/Nvim-R' " Programming language R suport and sortcuts
 
 " Color schemes
 Plugin 'MidnaPeach/neonwave.vim'
@@ -32,54 +58,37 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 
-" plugins
-
+" Plugins configurations
 " Rainbow Parenteses
-"let g:rbpt_colorpairs=[
-"    \ ['brown',       'RoyalBlue3'],
-"    \ ['Darkblue',    'SeaGreen3'],
-"    \ ['darkgray',    'DarkOrchid3'],
-"    \ ['darkgreen',   'firebrick3'],
-"    \ ['darkcyan',    'RoyalBlue3'],
-"    \ ['darkred',     'SeaGreen3'],
-"    \ ['darkmagenta', 'DarkOrchid3'],
-"    \ ['brown',       'firebrick3'],
-"    \ ['gray',        'RoyalBlue3'],
-"    \ ['black',       'SeaGreen3'],
-"    \ ['darkmagenta', 'DarkOrchid3'],
-"    \ ['Darkblue',    'firebrick3'],
-"    \ ['darkgreen',   'RoyalBlue3'],
-"    \ ['darkcyan',    'SeaGreen3'],
-"    \ ['darkred',     'DarkOrchid3'],
-"    \ ['red',         'firebrick3'],
-"    \ ]
-
-let g:rbpt_colorpairs=[
-    \ ['brown',       'RoyalBlue3'],
-    \ ['Darkblue',    'SeaGreen3'],
-    \ ['darkgray',    'DarkOrchid3'],
-    \ ['darkgreen',   'firebrick3'],
-    \ ['darkcyan',    'RoyalBlue3'],
-    \ ['190',     'SeaGreen3'],
-    \ ['255', 'DarkOrchid3'],
-    \ ['045',         'firebrick3'],
-    \ ['196',     'DarkOrchid3'],
-    \ ['077',       'firebrick3'],
-    \ ['013',        'RoyalBlue3'],
-    \ ['033',       'SeaGreen3'],
-    \ ['153', 'DarkOrchid3'],
-    \ ['199',    'firebrick3'],
-    \ ['046',   'RoyalBlue3'],
-    \ ['226',    'SeaGreen3'],
-    \ ]
-
-let g:rbpt_max=16
-let g:rbpt_loadcmd_toggle=0
-au VimEnter * RainbowParenthesesToggleAll
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-
+"'parentheses': ['start=/(/ end=/)/ fold'
+" the word fold indicates that (), [], and {} are colored individually by the
+"   sectioned sequence
+let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
+let g:rainbow_conf = {
+      \   'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+      \   'ctermfgs': [9, 10, 11, 12, 13, 14, 22, 202],
+      \   'operators': '_,_',
+      \   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold',
+      \       'start=/{/ end=/}/ fold'],
+      \   'separately': {
+      \     '*': {},
+      \     'tex': {
+      \       'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/',
+      \           'start=/\{\ end=/\}\ '],
+      \     },
+      \     'lisp': {
+      \       'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick',
+      \           'darkorchid3'],
+      \     },
+      \     'vim': {
+      \       'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/',
+      \           'start=/{/ end=/}/ fold',
+      \           'start=/(/ end=/)/ containedin=vimFuncBody',
+      \           'start=/\[/ end=/\]/ containedin=vimFuncBody',
+      \           'start=/{/ end=/}/ fold containedin=vimFuncBody'],
+      \     },
+      \  }
+      \}
 " Airline
 let g:airline#extensions#tabline#enabled=1
 let g:airline_powerline_fonts=1
@@ -90,12 +99,14 @@ let g:airline_theme='wombat'
 map <F2> :NERDTreeToggle<CR>
 let g:NERDTreeChDirMode=2
 
+" Tagbar
 nmap <F8> :TagbarToggle<CR>
 
 syntax on
 
+" Basic configurations
 set autoindent
-set colorcolumn=100
+set colorcolumn=80
 set cursorline
 set encoding=utf8
 set expandtab
@@ -119,10 +130,16 @@ set softtabstop=2
 set t_Co=256
 set undolevels=1000
 
+" Setting color scheme
 colorscheme calm-theme
 
+" Some macros
 let @e='i $WxExEa$'
 let @w='2l@e'
 let @t='$A \\ \cline{2-9}w'
 let @r="0@e6@w@t"
 let @y='5@r)))j'
+
+" Remaping commands
+nnoremap <Tab> :bnext<CR>
+nnoremap <S-Tab> :bprevious<CR>
