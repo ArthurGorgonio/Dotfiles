@@ -31,32 +31,38 @@
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_CUSTOM="$HOME/.oh-my-zsh/custom"
 
-prompt_docker() {
+# Change the color of the icon to blue when docker on
+zsh_docker() {
   systemctl status docker > /dev/null
   if [[ $? -eq 0 ]] ;then
     local color='%F{006}'
   else
     local color='%F{010}'
   fi
-  echo -en "%{$color%} \uF312 \uE0B1"
+  echo -en "%{$color%}\uF312"
 }
+
 # Using the spotify
-prompt_music() {
+zsh_spotify() {
   playerctl status > /dev/null 2> /dev/null
   if [[ $? -eq 1 ]] ;then
-    local color='%F{009}'
-    echo -ne "%{$color%}\uE0B1 \uF001 "
+    echo -ne "\uF001"
   else
-    local color='%F{006}'
     local artist=$(playerctl metadata xesam:artist)
     local album=$(playerctl metadata xesam:album)
     local track=$(playerctl metadata xesam:title)
 
-    echo -n "%{$color%}\uE0B1 \uF9C6$track " # 阮music
+    echo -e "\uF9C6$track" # 阮music
     #echo -e "%{$color%} ♫ $track - $artist"
     #echo -e "%{$color%} ♫ $track - $artist $album"
   fi
 }
+
+# Random function
+zsh_random() {
+  rand=$((RANDOM%255))
+}
+
 # Docker Unicode \uF308 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -64,17 +70,27 @@ prompt_music() {
 ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_MODE="nerdfont-complete"
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(docker battery music time dir vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_docker battery custom_spotify time dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(background_jobs ssh)
 #POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(background_jobs ssh music)
 #POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time vi_mode background_jobs ssh dir_writable)
 
-#POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR="\uE0BC"
-#POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR="\uE0BE"
+POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR="\uE0BC"
+POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR="\uE0BE"
 
 # OS icon colors
-POWERLEVEL9K_OS_ICON_BACKGROUND=000
-POWERLEVEL9K_OS_ICON_FOREGROUND=010
+# POWERLEVEL9K_OS_ICON_BACKGROUND=000
+# POWERLEVEL9K_OS_ICON_FOREGROUND=010
+#
+# Custom manjaro icon when docker is alive
+POWERLEVEL9K_CUSTOM_DOCKER="zsh_docker"
+POWERLEVEL9K_CUSTOM_DOCKER_BACKGROUND=000
+POWERLEVEL9K_CUSTOM_DOCKER_FOREGROUND=000
+
+# Custom function to show the spotify music
+POWERLEVEL9K_CUSTOM_SPOTIFY="zsh_spotify"
+POWERLEVEL9K_CUSTOM_SPOTIFY_BACKGROUND=000
+POWERLEVEL9K_CUSTOM_SPOTIFY_FOREGROUND=010
 
 # Write the command in new line
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
@@ -122,7 +138,8 @@ POWERLEVEL9K_STATUS_VERBOSE=false
 # Time format hour:minute - day[1-7] 1 - Monday
 POWERLEVEL9K_TIME_ICON="\uE381" #  CLOCK
 POWERLEVEL9K_TIME_FORMAT='%D{%H:%M}'
-POWERLEVEL9K_TIME_FOREGROUND=010
+POWERLEVEL9K_TIME_BACKGROUND=000
+POWERLEVEL9K_TIME_FOREGROUND=140
 
 # Background process colors
 POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND=000
