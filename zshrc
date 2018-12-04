@@ -51,7 +51,6 @@ zsh_spotify() {
     local artist=$(playerctl metadata xesam:artist)
     local album=$(playerctl metadata xesam:album)
     local track=$(playerctl metadata xesam:title)
-
     echo -e "\uF9C6$track" # 阮music
     #echo -e "%{$color%} ♫ $track - $artist"
     #echo -e "%{$color%} ♫ $track - $artist $album"
@@ -108,9 +107,9 @@ POWERLEVEL9K_COLOR_SCHEME='light'
 POWERLEVEL9K_DIR_HOME_BACKGROUND=000
 POWERLEVEL9K_DIR_HOME_FOREGROUND=014
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND=000
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND=014
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND=013
 POWERLEVEL9K_DIR_DEFAULT_BACKGROUND=000
-POWERLEVEL9K_DIR_DEFAULT_FOREGROUND=014
+POWERLEVEL9K_DIR_DEFAULT_FOREGROUND=012
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
 POWERLEVEL9K_SHORTEN_STRATEGY=truncate_folders
 POWERLEVEL9K_SHORTEN_DELIMITER="···"
@@ -170,6 +169,7 @@ POWERLEVEL9K_VCS_MODIFIED_FOREGROUND=011
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+# Baixar os plugins zsh-* do github
 plugins=(
   git
   zsh-autosuggestions
@@ -198,7 +198,7 @@ fi
 
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
-
+export SSH_ASKPASS="ksshaskpass"
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.

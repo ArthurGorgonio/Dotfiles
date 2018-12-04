@@ -42,12 +42,11 @@ Plugin 'vim-airline/vim-airline-themes' " Airline themes
 Plugin 'scrooloose/nerdtree' " Nerd Tree
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-fugitive'
-"Plugin 'tpope/vim-surround'
-"Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'luochen1990/rainbow' " Rainbow match
-Plugin 'w0rp/ale'
-Plugin 'valloric/youcompleteme' " Suggestions words
+Plugin 'w0rp/ale' " Systax check
 Plugin 'jalvesaq/Nvim-R' " Programming language R suport and sortcuts
+Plugin 'maralla/completor.vim' " Suggests words
+Plugin 'davidhalter/jedi-vim' " Jedi Pluguin
 
 " Color schemes
 Plugin 'MidnaPeach/neonwave.vim'
@@ -59,6 +58,21 @@ filetype plugin indent on    " required
 
 
 " Plugins configurations
+" ALE
+let g:ale_fix_on_save = 1
+let g:ale_linters = {'python': ['flake8', 'pylint']}
+let g:ale_fixers = {
+    \ 'python': [
+    \   'add_blank_lines_for_python_control_statements',
+    \   'autopep8',
+    \   'black',
+    \   'isort',
+    \   'remove_trailing_lines',
+    \   'trim_whitespace',
+    \   'yapf'
+    \ ]
+    \}
+
 " Rainbow Parenteses
 "'parentheses': ['start=/(/ end=/)/ fold'
 " the word fold indicates that (), [], and {} are colored individually by the
@@ -105,7 +119,9 @@ nmap <F8> :TagbarToggle<CR>
 syntax on
 
 " Basic configurations
+let python_highlight_all=1
 set autoindent
+set clipboard=unnamed
 set colorcolumn=80
 set cursorline
 set encoding=utf8
@@ -121,7 +137,6 @@ set ruler
 set shiftwidth=2
 set showbreak=···
 set showcmd
-"set showmatch
 set showtabline=2
 set smartcase
 set smartindent

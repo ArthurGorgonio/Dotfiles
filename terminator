@@ -1,5 +1,7 @@
 [global_config]
+  enabled_plugins = TerminalShot, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
   extra_styling = False
+  inactive_color_offset = 0.807692307692
   scroll_tabbar = True
   title_font = SpaceMono Nerd Font Mono 9
   title_use_system_font = False
@@ -25,10 +27,12 @@
 [profiles]
   [[default]]
     allow_bold = False
+    background_type = transparent
     cursor_blink = False
-    cursor_color = "#aaaaaa"
+    cursor_color = "#62bdff"
+    cursor_color_fg = False
     font = SpaceMono Nerd Font Mono 9
-    foreground_color = "#ff00b8"
+    foreground_color = "#00ffff"
     icon_bell = False
     palette = "#000000:#cd0000:#00cd00:#cdcd00:#0097ff:#cd00cd:#00cdcd:#faebd7:#404040:#ff0000:#00ff00:#ffff00:#007f00:#ff00ff:#00ffff:#ffffff"
     scrollback_infinite = True
