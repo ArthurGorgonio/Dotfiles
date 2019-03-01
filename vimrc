@@ -4,7 +4,7 @@
 """"""""""""""""""""""""""""""""""""""""
 "        Vim Configuration File        "
 "     Maintainer: Arthur Gorgonio      "
-"       Last Change: 2018 Oct 09       "
+"       Last Change: 2019 Mar 01       "
 """"""""""""""""""""""""""""""""""""""""
 
 """ COLORS CODE
@@ -12,13 +12,13 @@
 " colors are ordened by xterm code. The follow lines represent a list of the
 " colors than I use.
 " Code color in xterm - the name of the color - the code in rgb
-" 000 -   Black    - #000000
 " 009 -    Red     - #FF0000
 " 010 -   Green    - #00FF00
 " 011 -   Yellow   - #FFFF00
 " 013 -  Fuchsia   - #FF00FF
 " 014 -    Aqua    - #00FFFF
-" 022 - DarkGreen  - #005F00
+" 021 -    Blue    - #0000FF
+" 059 -   Grey37   - #5F5F5F
 " 202 - OrangeRed1 - #FF5F00
 "
 " The follow links were used to choose the colors and the icon in the configuration
@@ -47,6 +47,7 @@ Plugin 'w0rp/ale' " Systax check
 Plugin 'jalvesaq/Nvim-R' " Programming language R suport and sortcuts
 Plugin 'maralla/completor.vim' " Suggests words
 Plugin 'davidhalter/jedi-vim' " Jedi Pluguin
+Plugin 'WolfgangMehner/c-support' " C suport in vim
 
 " Color schemes
 Plugin 'MidnaPeach/neonwave.vim'
@@ -74,13 +75,12 @@ let g:ale_fixers = {
     \}
 
 " Rainbow Parenteses
-"'parentheses': ['start=/(/ end=/)/ fold'
 " the word fold indicates that (), [], and {} are colored individually by the
 "   sectioned sequence
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 let g:rainbow_conf = {
       \   'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
-      \   'ctermfgs': [9, 10, 11, 12, 13, 14, 22, 202],
+      \   'ctermfgs': [9, 10, 11, 21, 13, 14, 59, 202],
       \   'operators': '_,_',
       \   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold',
       \       'start=/{/ end=/}/ fold'],
@@ -121,7 +121,8 @@ syntax on
 " Basic configurations
 let python_highlight_all=1
 set autoindent
-set clipboard=unnamed
+set bs=2 "backspace working well
+set clipboard=unnamedplus
 set colorcolumn=80
 set cursorline
 set encoding=utf8
@@ -133,10 +134,12 @@ set laststatus=2
 set noshowmode
 set noswapfile
 set number
+set relativenumber
 set ruler
 set shiftwidth=2
 set showbreak=···
 set showcmd
+set showmatch
 set showtabline=2
 set smartcase
 set smartindent
@@ -145,15 +148,10 @@ set softtabstop=2
 set t_Co=256
 set undolevels=1000
 
+set pastetoggle=<F12> " sane identation on pastes
+
 " Setting color scheme
 colorscheme calm-theme
-
-" Some macros
-let @e='i $WxExEa$'
-let @w='2l@e'
-let @t='$A \\ \cline{2-9}w'
-let @r="0@e6@w@t"
-let @y='5@r)))j'
 
 " Remaping commands
 nnoremap <Tab> :bnext<CR>
