@@ -44,7 +44,7 @@ zsh_docker() {
 
 # Using the spotify
 zsh_spotify() {
-  PLAYERSTATUS=$(playerctl status > /dev/null 2> /dev/null)
+  PLAYERSTATUS=$(playerctl status) > /dev/null 2> /dev/null
   if [[ "$PLAYERSTATUS" != "" ]]
   then
     local artist=$(playerctl metadata xesam:artist)
