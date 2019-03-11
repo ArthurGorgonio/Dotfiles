@@ -44,16 +44,17 @@ zsh_docker() {
 
 # Using the spotify
 zsh_spotify() {
-  playerctl status > /dev/null 2> /dev/null
-  if [[ $? -eq 1 ]] ;then
-    echo -ne "\uF001"
-  else
+  PLAYERSTATUS=$(playerctl status > /dev/null 2> /dev/null)
+  if [[ "$PLAYERSTATUS" != "" ]]
+  then
     local artist=$(playerctl metadata xesam:artist)
     local album=$(playerctl metadata xesam:album)
     local track=$(playerctl metadata xesam:title)
     echo -e "\uF9C6$track" # 阮music
     #echo -e "%{$color%} ♫ $track - $artist"
     #echo -e "%{$color%} ♫ $track - $artist $album"
+  else
+    echo -ne "\uF001"
   fi
 }
 
@@ -69,6 +70,7 @@ zsh_random() {
 ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_MODE="nerdfont-complete"
 
+# custom_spotify
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_docker battery custom_spotify time dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(background_jobs ssh)
 #POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(background_jobs ssh music)
@@ -107,7 +109,7 @@ POWERLEVEL9K_COLOR_SCHEME='light'
 POWERLEVEL9K_DIR_HOME_BACKGROUND=000
 POWERLEVEL9K_DIR_HOME_FOREGROUND=014
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND=000
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND=013
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND=010
 POWERLEVEL9K_DIR_DEFAULT_BACKGROUND=000
 POWERLEVEL9K_DIR_DEFAULT_FOREGROUND=012
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
