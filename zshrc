@@ -47,8 +47,8 @@ zsh_spotify() {
   PLAYERSTATUS=$(playerctl status) > /dev/null 2> /dev/null
   if [[ "$PLAYERSTATUS" != "" ]]
   then
-    local artist=$(playerctl metadata xesam:artist)
-    local album=$(playerctl metadata xesam:album)
+    #local artist=$(playerctl metadata xesam:artist)
+    #local album=$(playerctl metadata xesam:album)
     local track=$(playerctl metadata xesam:title)
     echo -e "\uF9C6$track" # 阮music
     #echo -e "%{$color%} ♫ $track - $artist"

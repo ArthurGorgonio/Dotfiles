@@ -136,7 +136,6 @@ set noshowmode
 set noswapfile
 set number
 set pastetoggle=<F12> " sane identation on pastes
-set relativenumber
 set ruler
 set shiftwidth=2
 set showbreak=···
