@@ -39,18 +39,17 @@ Plugin 'VundleVim/Vundle.vim' "Pluguin manager
 " Plugins
 Plugin 'vim-airline/vim-airline' " Airline
 Plugin 'vim-airline/vim-airline-themes' " Airline themes
-Plugin 'scrooloose/nerdtree' " Nerd Tree
+"Plugin 'scrooloose/nerdtree' " Nerd Tree
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-fugitive'
-Plugin 'luochen1990/rainbow' " Rainbow match
+"Plugin 'luochen1990/rainbow' " Rainbow match
 Plugin 'w0rp/ale' " Systax check
-Plugin 'jalvesaq/Nvim-R' " Programming language R suport and sortcuts
-Plugin 'maralla/completor.vim' " Suggests words
+"Plugin 'maralla/completor.vim' " Suggests words
 Plugin 'davidhalter/jedi-vim' " Jedi Pluguin
-"Plugin 'WolfgangMehner/c-support' " C suport in vim
+Plugin 'vifm/vifm.vim'
+Plugin 'JamshedVesuna/vim-markdown-preview'
 
 " Color schemes
-Plugin 'MidnaPeach/neonwave.vim'
 Plugin 'ArthurGorgonio/vim-themes-improved'
 
 " All of your Plugins must be added before the following line
@@ -74,48 +73,53 @@ let g:ale_fixers = {
     \ ]
     \}
 
-" Rainbow Parenteses
-"'parentheses': ['start=/(/ end=/)/ fold'
-" the word fold indicates that (), [], and {} are colored individually by the
-"   sectioned sequence
-let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
-let g:rainbow_conf = {
-      \   'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
-      \   'ctermfgs': [9, 10, 11, 21, 13, 14, 22, 202],
-      \   'operators': '_,_',
-      \   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold',
-      \       'start=/{/ end=/}/ fold'],
-      \   'separately': {
-      \     '*': {},
-      \     'tex': {
-      \       'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/',
-      \           'start=/\{\ end=/\}\ '],
-      \     },
-      \     'lisp': {
-      \       'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick',
-      \           'darkorchid3'],
-      \     },
-      \     'vim': {
-      \       'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/',
-      \           'start=/{/ end=/}/ fold',
-      \           'start=/(/ end=/)/ containedin=vimFuncBody',
-      \           'start=/\[/ end=/\]/ containedin=vimFuncBody',
-      \           'start=/{/ end=/}/ fold containedin=vimFuncBody'],
-      \     },
-      \  }
-      \}
+" " Rainbow Parenteses
+" "'parentheses': ['start=/(/ end=/)/ fold'
+" " the word fold indicates that (), [], and {} are colored individually by the
+" "   sectioned sequence
+" let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
+" let g:rainbow_conf = {
+"       \   'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+"       \   'ctermfgs': [9, 10, 11, 21, 13, 14, 22, 202],
+"       \   'operators': '_,_',
+"       \   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold',
+"       \       'start=/{/ end=/}/ fold'],
+"       \   'separately': {
+"       \     '*': {},
+"       \     'tex': {
+"       \       'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/',
+"       \           'start=/\{\ end=/\}\ '],
+"       \     },
+"       \     'lisp': {
+"       \       'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick',
+"       \           'darkorchid3'],
+"       \     },
+"       \     'vim': {
+"       \       'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/',
+"       \           'start=/{/ end=/}/ fold',
+"       \           'start=/(/ end=/)/ containedin=vimFuncBody',
+"       \           'start=/\[/ end=/\]/ containedin=vimFuncBody',
+"       \           'start=/{/ end=/}/ fold containedin=vimFuncBody'],
+"       \     },
+"       \  }
+"       \}
 " Airline
 let g:airline#extensions#tabline#enabled=1
 let g:airline_powerline_fonts=1
 let g:airline_theme='wombat'
 
-" NerdTree Configuration
-" Give a shortcut key to NERD Tree
-map <F2> :NERDTreeToggle<CR>
-let g:NERDTreeChDirMode=2
+"" NerdTree Configuration
+"" Give a shortcut key to NERD Tree
+"map <F2> :NERDTreeToggle<CR>
+"let g:NERDTreeChDirMode=2
 
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
+
+" Configure the Markdown plugin
+let vim_markdown_preview_browser='Mozilla Firefox'
+let vim_markdown_preview_github=1
+
 
 syntax on
 

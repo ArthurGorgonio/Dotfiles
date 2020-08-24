@@ -71,7 +71,7 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_MODE="nerdfont-complete"
 
 # custom_spotify
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_docker battery custom_spotify time dir vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_docker battery custom_spotify dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(background_jobs ssh)
 #POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(background_jobs ssh music)
 #POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time vi_mode background_jobs ssh dir_writable)
@@ -146,11 +146,11 @@ POWERLEVEL9K_TIME_FOREGROUND=140
 POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND=000
 POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND=010
 
-# The Vi mode in prompt
+# # The Vi mode in prompt
 # POWERLEVEL9K_VI_INSERT_MODE_STRING="%BINSERT"
 # POWERLEVEL9K_VI_COMMAND_MODE_STRING="%BNORMAL"
 # POWERLEVEL9K_VI_MODE_INSERT_BACKGROUND=000
-# POWERLEVEL9K_VI_MODE_INSERT_FOREGROUND=32
+# POWERLEVEL9K_VI_MODE_INSERT_FOREGROUND=10
 # POWERLEVEL9K_VI_MODE_NORMAL_BACKGROUND=000
 # POWERLEVEL9K_VI_MODE_NORMAL_FOREGROUND=202
 
@@ -201,6 +201,7 @@ fi
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 export SSH_ASKPASS="ksshaskpass"
+export PATH=$PATH:~/.pub-cache/bin:/opt/flutter/bin/cache/dart-sdk/bin
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -213,3 +214,6 @@ export SSH_ASKPASS="ksshaskpass"
 if [ -f ~/.zsh_aliases ]; then
   . ~/.zsh_aliases
 fi
+
+# Disable beep
+xset b off
