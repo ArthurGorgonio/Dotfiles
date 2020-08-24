@@ -1,0 +1,89 @@
+conky.config = {
+  alignment = 'top_right',
+  background = false,
+  border_width = 0.5,
+  cpu_avg_samples = 4,
+  default_color = 'white',
+  default_outline_color = 'grey',
+  default_shade_color = 'black',
+  draw_borders = true,
+  draw_graph_borders = true,
+  draw_outline = false,
+  draw_shades = false,
+  use_xft = true,
+  font = 'Source Code Variable:size=9',
+  font0 = 'Source Code Variable:Bold:size=8',
+  font1 = 'Source Code Variable:Bold:size=10',
+  gap_x = 30,
+  gap_y = 60,
+  maximum_width = 220,
+  minimum_height = 5,
+  minimum_width = 220,
+  net_avg_samples = 2,
+  double_buffer = true,
+  out_to_console = false,
+  out_to_stderr = false,
+  extra_newline = false,
+  own_window = true,
+  own_window_colour = '000000',
+  own_window_class = 'Conky',
+  own_window_argb_visual = true,
+  own_window_type = 'dock',
+  own_window_transparent = true,
+  own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+  stippled_borders = 0,
+  update_interval = 1,
+  uppercase = false,
+  use_spacer = 'none',
+  short_units = true,
+  show_graph_scale = false,
+  show_graph_range = false,
+  template0 = '\n',
+  color0 = 'FF00FF',
+  color1 = 'cyan',
+  color2 = '00FF00',
+  color3 = '7AC3EA'
+}
+
+conky.text = [[
+  # SYS
+  ${font1}${color0}SYSTEM ${hr 2}${color}${font}
+  Kernel ${alignr} ${execi 3600 uname -r}
+  Uptime ${alignr} ${uptime}
+  Hostname ${alignr} ${execi 3600 uname -n}
+  ${template0}
+  # CPU
+  ${font1}${color0}CPU-info ${hr 2}${color}${font}
+  Usage ${alignr} ${cpu}%
+  CPU Temperature ${alignr} ${color1} ${acpitemp}${color}°C / 95ªC
+  Core-1 Temperature ${alignr} ${color1} ${exec sensors | grep 'Core 0' | cut -c17-19 | grep -Po '\d+'}${color}ªC / 95ªC
+  Core-2 Temperature ${alignr} ${color1} ${exec sensors | grep 'Core 1' | cut -c17-19 | grep -Po '\d+'}${color}ªC / 95ªC
+  ${template0}
+  # RAM
+  ${font1}${color0}RAM ${hr 2}${color}${font}${offset 1}
+  In use ${alignr} ${color1} $mem ${color} / $memmax
+  Free ${alignr} ${color2} $memeasyfree ${color} / $memmax
+  Buffers ${alignr} ${color3} $buffers ${color}
+  Cache ${alignr} ${color3} $cached
+  ${template0}
+  #HD
+  ${font1}${color0}HD ${hr 2}${color}${font}${offset 1}
+  ${offset 1}${color}Partition ${alignr}Free   ${alignr}Used   ${alignr}Total
+  ${offset 1}/home (${fs_type /home})${alignr}${fs_free /home}   ${fs_used /home}    ${fs_size /home}
+  ${offset 4}${color FFFDE2}${fs_bar 4 /home/}
+  ${offset 1}/${offset 30}(${fs_type /})${alignr}${fs_free /}  ${fs_used /}   ${fs_size /}
+  ${offset 4}${color FFFDE2}${fs_bar 4 /}
+  ${template0}
+  # Process on PC
+  ${font1}${color0}PROCESSES ${hr 2}${color}${font}${offset 1}
+  ${offset 1}${font}${color}Name ${alignr}PID   ${alignr}CPU   ${alignr}MEM
+  ${offset 1}${color FFE881}${top name 1}${alignr}${top pid 1}${top cpu 1}${top mem 1}
+  ${offset 1}${color A6A63B}${top name 2}${alignr}${top pid 2}${top cpu 2}${top mem 2}
+  ${offset 1}${color 55A63B}${top name 3}${alignr}${top pid 3}${top cpu 3}${top mem 3}
+  ${offset 1}${color 3BA691}${top name 4}${alignr}${top pid 4}${top cpu 4}${top mem 4}
+# th FF0000
+# th BF4040
+# th 40BFBF
+# th 00FFFF
+
+]]
